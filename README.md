@@ -78,22 +78,22 @@ To set up local environment, follow these steps:
 **2. Install Required Libraries**
 
 Open Command Prompt and run the following commands:<br>
-:: Upgrade pip (optional but recommended)
+Upgrade pip (optional but recommended)
 ```
   python -m pip install --upgrade pip
 ```
 
-:: Install Jupyter Notebook
+Install Jupyter Notebook
 ```
   python -m pip install notebook  
 ```
 
-:: Install TensorFlow (including Keras)
+Install TensorFlow (including Keras)
 ```
   python -m pip install tensorflow  
 ```
 
-:: Install Pillow (PIL library)
+Install Pillow (PIL library)
 ```
   python -m pip install pillow
 ```
