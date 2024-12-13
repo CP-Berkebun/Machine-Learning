@@ -101,17 +101,17 @@ Open Command Prompt and run the following commands:<br>
 **3. Verify Installation**
 
 Run these commands in Command Prompt to confirm successful installations:
-:: Verify Jupyter Notebook
+Verify Jupyter Notebook
 ```
   jupyter --version
 ```
 
-:: Verify TensorFlow
+Verify TensorFlow
 ```
   python -c "import tensorflow as tf; print(tf.__version__)"  
 ```
 
-:: Verify Pillow
+Verify Pillow
 ```
   python -c "from PIL import Image; print('Pillow installed successfully')"  
 ```
