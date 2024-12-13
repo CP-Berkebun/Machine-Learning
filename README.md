@@ -13,13 +13,9 @@ Machine Learning/
 |── dataset/
 │   ├── treatment.xlsx
 |   |── plant_images
-│   ├── apple
-│   |    ├── apple__rot
-|   |    ├── ...
-|   |
-│   ├── wheat
+│        ├── apple__rot
+│         ...
 │        ├── wheat__rot
-|
 |── disease.json
 ```
 
