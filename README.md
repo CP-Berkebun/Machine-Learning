@@ -119,24 +119,64 @@ Run these commands in Command Prompt to confirm successful installations:
 This model can also be set up in online notebooks such as Google Colab, Kaggle, and similar platforms.
 
 
-
 ## 📈 Usage and Results
 
 To train the model, follow these steps:
 
 <ol>
-  <li>Import libraries needed inside the notebook</li>
-  <li>Validate all the data</li>
-  <li>Preproccess
+  <li>Import Libraries  
+    Begin by importing all necessary libraries to handle image loading, preprocessing, augmentation, and model building, such as <code>ImageDataGenerator</code>, <code>ResNet50</code>, <code>GlobalAveragePooling2D</code>, and others.
+  </li>
+  <li>Validate and Filter Data  
     <ul>
-      <li type="a">Will get augmented data etc.</li>
+      <li>Ensure that only valid image files (JPG, PNG, JPEG) are considered for the dataset.</li>
+      <li>Skip any corrupted or invalid images to ensure the data is clean for training.</li>
+      <li>Filter the dataset to include only the selected crops, ensuring each category is properly labeled in the dataset.</li>
     </ul>
   </li>
-  <li>Training, dst</li>
+  <li>Data Augmentation and Preprocessing  
+    <ul>
+      <li>Apply image augmentation (rotation, width/height shift, shear, zoom, and horizontal flip) to enrich the training dataset.</li>
+      <li>The dataset is augmented until each crop class reaches a minimum number of 2000 images. If the original number of images in a class is less than 2000, augmentation is performed to reach the required size.</li>
+      <li>Resize images to 224x224 pixels as the input size for the model.</li>
+    </ul>
+  </li>
+  <li>Dataset Splitting  
+    <ul>
+      <li>Split the dataset into training, validation, and testing sets with a ratio of 80%, 10%, and 10% respectively.</li>
+      <li>Save the data in separate directories for each split (train, val, test), organized by the Indonesian crop labels.</li>
+    </ul>
+  </li>
+  <li>Model Training  
+    <ul>
+      <li>Use a <code>ResNet50</code> model (without the top layer) as the base for feature extraction.</li>
+      <li>Add custom dense layers on top to classify the crops and diseases.</li>
+      <li>Train the model using the augmented training data with the Adam optimizer and categorical cross-entropy loss function.</li>
+      <li>Apply callbacks like early stopping and model checkpointing to ensure optimal model performance.</li>
+    </ul>
+  </li>
+  <li>Model Evaluation  
+    <ul>
+      <li>After training, evaluate the model using the test dataset to measure its accuracy.</li>
+      <li>The model's performance is reported as a test accuracy percentage.</li>
+    </ul>
+  </li>
 </ol>
 
 After the training process, these are the outputs we get:
+
 <ol>
-  <li>Accuracy</li>
-  <li>Result Example, dll</li>
+  <li>Accuracy  
+    The final test accuracy is reported after evaluating the model on the test dataset.
+  </li>
+  <li>Augmented Images  
+    Augmented images are saved in the output directory (<code>/kaggle/working/augmented_data</code>). These images are used for training, ensuring a diverse dataset for the model.
+  </li>
+  <li>Trained Model  
+    The best model is saved in the file <code>/kaggle/working/best_model_2.keras</code>. This model can be used for inference on new, unseen data.
+  </li>
+  <li>Example Results  
+    After training, you can visualize the model's performance on the validation set and see the predicted results on test images.
+  </li>
 </ol>
+
